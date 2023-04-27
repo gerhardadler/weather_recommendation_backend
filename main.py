@@ -24,4 +24,5 @@ async def get_access_token():
         "Authorization": "Basic " + base64.b64encode(f"{config.SPOTIFY_CLIENT_ID}:{config.SPOTIFY_CLIENT_SECRET}".encode('utf-8')).decode('utf-8')
     }
     response = requests.post(url, data=body, headers=headers)
-    return response.json(), response.status_code
+    response.status_code = response.status_code
+    return response.json()
